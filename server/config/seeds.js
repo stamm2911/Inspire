@@ -4,7 +4,15 @@ const { Profile, Product } = require("../models");
 db.once("open", async () => {
 
     // Insert SEEDS for PROFILE here!!!
-    
+    await Profile.deleteMany();
+    await Profile.create({
+        firstName: 'Carlos',
+        lastName: 'Brito',
+        email: 'carlos@carlos.com',
+        password: 'carlos'
+    })
+    console.log('profiles seeded');
+
     await Product.deleteMany();
     const products = await Product.insertMany([
         {
@@ -52,4 +60,5 @@ db.once("open", async () => {
     ]);
 
     console.log("products seeded");
+    process.exit();
 });
