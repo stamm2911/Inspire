@@ -1,0 +1,41 @@
+.market-post-container {
+  /* background-color: red; */
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.market-post-container img {
+  border-radius: 15px;
+}
+
+.market-post-info {
+  /* background-color: rgb(145, 145, 255); */
+  display: flex;
+  justify-content: space-between;
+  padding: 100px;
+  width: 100%;
+  padding: 10px;
+}
+
+nav{
+    background-color: red;
+    height: 100px;
+    width: 100%;
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+nav ul{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: flex-end; */
+}
+
+nav li{
+    padding: 30px;
+}

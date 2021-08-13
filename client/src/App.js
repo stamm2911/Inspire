@@ -1,18 +1,21 @@
 import React from "react";
-import Home from "./components/home";
-import Login from "./components/login";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import Main from "./pages/main";
+import MarketPlace from "./pages/marketPlace";
+import Profile from "./pages/profile";
+import SignIn from "./pages/signIn";
+
 import Navbar from "./components/navbar";
-import Marketpalce from "./components/marketplace";
-import User from "./components/user";
 
 export default function App() {
   return (
-    <main>
-      {/* <Navbar /> */}
-      {/* <Home /> */}
-      <Marketpalce />
-      {/* <User /> */}
-      {/* <Login /> */}
-    </main>
+    <Router>
+      <main>
+        <Navbar />
+        <Route exact path="/main" component={Main} />
+        <Route exact path="/marketplace" component={MarketPlace} />
+      </main>
+    </Router>
   );
 }
