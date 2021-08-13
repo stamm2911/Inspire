@@ -1,16 +1,16 @@
 import React from "react";
 import Home from "./components/home";
-import Login from "./components/Login";
-import Navbar from "./components/Navbar";
-import Marketpalce from "./components/Marketpalce";
-import User from "./components/User";
+import Login from "./components/login";
+import Navbar from "./components/navbar";
+import Marketplace from "./components/marketplace";
+import User from "./components/user";
 
 export default function App() {
   return (
     <main>
       <Navbar />
       <Home />
-      <Marketpalce />
+      <Marketplace />
       <User />
       <Login />
     </main>
