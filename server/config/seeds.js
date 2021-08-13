@@ -3,9 +3,8 @@ const { Profile, Product } = require("../models");
 
 db.once("open", async () => {
 
-    // Insert SEEDS for PROFILE here!!!
-    
-    await Product.deleteMany();
+  // Product Seeds
+  await Product.deleteMany();
   const products = await Product.insertMany([
     {
       name: "Toyota Prado ",
@@ -50,6 +49,27 @@ db.once("open", async () => {
       image: "tundra.jpg",
     },
   ]);
-
+  
   console.log("products seeded");
+
+  // Profile Seeds
+  await Profile.deleteMany();
+  await Profile.create({
+    name: 'Bob Smith',
+    email: 'BobSmith@mail.com',
+    password: 'verySafePassword1',
+    cart: [
+      {
+        products: [products[0]._id, products[1]._id]
+      }
+    ]
+  });
+
+  await User.create({
+    name: 'Richard Jones',
+    email: 'RichardJones@mail.com',
+    password: 'verySafePassword2',
+  });
+
+  console.log("profiles seeded");  
 });
