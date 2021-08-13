@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-
+//  Remember to also modify seeds.js!!!!
 const profileSchema = new Schema({
   name: {
     type: String,
