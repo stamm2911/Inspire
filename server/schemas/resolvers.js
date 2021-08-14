@@ -1,42 +1,80 @@
+const { AuthenticationError } = require('apollo-server-express');
 const { Profile } = require('../models');
+const { Post } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     profiles: async () => {
-      return Profile.find();
+      return await Profile.find();
     },
 
     profile: async (parent, { profileId }) => {
-      return Profile.findOne({ _id: profileId });
+      return await Profile.findOne({ _id: profileId });
     },
+
+    posts: async () => {
+      return await Post.find();
+    },
+
+    post: async (parent, { _id }) => {
+      return await Post.findById(_id);
+    }
   },
 
   Mutation: {
-    addProfile: async (parent, { name }) => {
-      return Profile.create({ name });
+    addProfile: async (parent, args) => {
+      const user = await User.create(args);
+      const token = signToken(user);
+
+      return { token, user };
     },
-    addSkill: async (parent, { profileId, skill }) => {
-      return Profile.findOneAndUpdate(
-        { _id: profileId },
-        {
-          $addToSet: { skills: skill },
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
+
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
     },
-    removeProfile: async (parent, { profileId }) => {
-      return Profile.findOneAndDelete({ _id: profileId });
+
+    addPost: async(parent, args) => {
+      const post = await Post.create(args);
+      return { post }
     },
-    removeSkill: async (parent, { profileId, skill }) => {
-      return Profile.findOneAndUpdate(
-        { _id: profileId },
-        { $pull: { skills: skill } },
-        { new: true }
-      );
+
+    addComment: async(parent, args) => {
+
     },
+
+    updatePost: async(parent, { _id, picture, description }) => {
+      return Post.findByIdAndUpdate(_id, {
+        picture: picture,
+        descrption: description
+      })
+    },
+
+    deletePost: async (parent, { postId }) => {
+      return Post.findOneAndDelete({ _id: postId });
+    }
+
+    // removeSkill: async (parent, { profileId, skill }) => {
+    //   return Profile.findOneAndUpdate(
+    //     { _id: profileId },
+    //     { $pull: { skills: skill } },
+    //     { new: true }
+    //   );
+    // },
   },
 };
 
