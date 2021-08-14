@@ -24,14 +24,14 @@ const resolvers = {
 
   Mutation: {
     addProfile: async (parent, args) => {
-      const user = await User.create(args);
+      const user = await Profile.create(args);
       const token = signToken(user);
 
       return { token, user };
     },
 
     login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+      const user = await Profile.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError('Incorrect credentials');
@@ -54,27 +54,24 @@ const resolvers = {
     },
 
     addComment: async(parent, args) => {
-
+      const post = await Post.findById(args.postId);
+      const comment = await Comment.create(args.text);
+      const newComment = [...post.comments, comment];
+      return await Post.findByIdAndUpdate(args.postId, {
+        comments: newComment
+      })
     },
 
     updatePost: async(parent, { _id, picture, description }) => {
-      return Post.findByIdAndUpdate(_id, {
+      return await Post.findByIdAndUpdate(_id, {
         picture: picture,
         descrption: description
       })
     },
 
-    deletePost: async (parent, { postId }) => {
-      return Post.findOneAndDelete({ _id: postId });
+    deletePost: async (parent, { _id }) => {
+      return await Post.findOneAndDelete({ _id: _id });
     }
-
-    // removeSkill: async (parent, { profileId, skill }) => {
-    //   return Profile.findOneAndUpdate(
-    //     { _id: profileId },
-    //     { $pull: { skills: skill } },
-    //     { new: true }
-    //   );
-    // },
   },
 };
 
