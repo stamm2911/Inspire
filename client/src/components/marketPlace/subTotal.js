@@ -1,12 +1,16 @@
 import React from "react";
 
-function Subtotal() {
+function Subtotal({ cart }) {
+  const cartPrices = cart.map((item) => item.price);
   return (
-    <article className='subTotal-container'>
-      <p>Subtotal: $100</p>
-      <p>Items: 3 pz</p>
+    <article className="subTotal-container">
+      <p>
+        Subtotal: $
+        {cart.length > 0 ? cartPrices.reduce((total, num) => total + num) : 0}
+      </p>
+      <p>Items: {cart.length}</p>
     </article>
   );
 }
 
-export default Subtotal
+export default Subtotal;

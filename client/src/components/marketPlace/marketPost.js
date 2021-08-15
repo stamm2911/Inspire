@@ -1,10 +1,14 @@
 import React from "react";
+import { useCartContext } from "../../utils/CartContext";
 import { v4 as uuidv4 } from 'uuid';
 
-function marketPost({ products }) {
+function MarketPost({ products }) {
+  const {addItem} = useCartContext();
+
   if (!products.length) {
     return <h3>No Posts Yet</h3>;
   }
+
   return (
     <>
       {products && products.map((product) => (
@@ -18,7 +22,7 @@ function marketPost({ products }) {
               <p>{product.available ? "Available" : "Not available"}</p>
             </div>
             <div>
-              <button>Add</button>
+              <button onClick={() => addItem(product)}>Add</button>
             </div>
           </section>
         </article>
@@ -27,4 +31,4 @@ function marketPost({ products }) {
   );
 }
 
-export default marketPost;
+export default MarketPost;

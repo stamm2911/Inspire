@@ -1,14 +1,25 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
-function cartItem({productName, image}) {
+function cartItem({ cart, removeItem }) {
+  console.log(cart);
+  if (cart.length < 1) {
+    return <h4>No items</h4>;
+  }
+ 
   return (
-    <article className="cartItem-container">
-      <img src={image} alt="pic" />
-      <section className='cartItem-description'>
-        <p>{productName}</p>
-        <button>X</button>
-      </section>
-    </article>
+    <>
+      {cart &&
+        cart.map((item) => (
+          <article key={uuidv4()} className="cartItem-container">
+            <img src={item.image} alt="pic" />
+            <section className="cartItem-description">
+              <p>{item.productName}</p>
+              <button onClick={() => removeItem(item)}>X</button>
+            </section>
+          </article>
+        ))}
+    </>
   );
 }
 

@@ -3,11 +3,15 @@ import MarketPost from "../components/marketPlace/marketPost";
 import CartItem from "../components/marketPlace/cartItem";
 import Subtotal from "../components/marketPlace/subTotal";
 import { useQuery } from "@apollo/client";
-import { QUERY_MARKETPOSTS } from "../utils/queries";
+import { QUERY_MARKETPOSTS } from "../utils/MarketPlaceQueries";
+import { useCartContext } from "../utils/CartContext";
 
-function Marketpalce() {
+function Marketplace() {
+  const { cart, addItem, removeItem } = useCartContext();
+
   const products = [
     {
+      _id: 1,
       image: "https://via.placeholder.com/250x250.png/09f/fff",
       price: 4000,
       productName: "Book1",
@@ -15,6 +19,7 @@ function Marketpalce() {
       available: true,
     },
     {
+      _id: 2,
       image: "https://via.placeholder.com/250x450.png/09f/fff",
       price: 3000,
       productName: "Book2",
@@ -22,6 +27,7 @@ function Marketpalce() {
       available: false,
     },
     {
+      _id: 3,
       image: "https://via.placeholder.com/250x450.png/09f/fff",
       price: 2500,
       productName: "Book3",
@@ -29,6 +35,7 @@ function Marketpalce() {
       available: true,
     },
     {
+      _id: 4,
       image: "https://via.placeholder.com/250x250.png/09f/fff",
       price: 4000,
       productName: "Book1",
@@ -36,6 +43,7 @@ function Marketpalce() {
       available: true,
     },
     {
+      _id: 5,
       image: "https://via.placeholder.com/250x450.png/09f/fff",
       price: 3000,
       productName: "Book2",
@@ -43,6 +51,102 @@ function Marketpalce() {
       available: false,
     },
     {
+      _id: 6,
+      image: "https://via.placeholder.com/250x450.png/09f/fff",
+      price: 2500,
+      productName: "Book3",
+      productDesc: "My favorite book3",
+      available: true,
+    },
+    {
+      _id: 7,
+      image: "https://via.placeholder.com/250x250.png/09f/fff",
+      price: 4000,
+      productName: "Book1",
+      productDesc: "My favorite book1",
+      available: true,
+    },
+    {
+      _id: 8,
+      image: "https://via.placeholder.com/250x450.png/09f/fff",
+      price: 3000,
+      productName: "Book2",
+      productDesc: "My favorite book2",
+      available: false,
+    },
+    {
+      _id: 9,
+      image: "https://via.placeholder.com/250x450.png/09f/fff",
+      price: 2500,
+      productName: "Book3",
+      productDesc: "My favorite book3",
+      available: true,
+    },
+    {
+      _id: 10,
+      image: "https://via.placeholder.com/250x250.png/09f/fff",
+      price: 4000,
+      productName: "Book1",
+      productDesc: "My favorite book1",
+      available: true,
+    },
+    {
+      _id: 11,
+      image: "https://via.placeholder.com/250x450.png/09f/fff",
+      price: 3000,
+      productName: "Book2",
+      productDesc: "My favorite book2",
+      available: false,
+    },
+    {
+      _id: 12,
+      image: "https://via.placeholder.com/250x450.png/09f/fff",
+      price: 2500,
+      productName: "Book3",
+      productDesc: "My favorite book3",
+      available: true,
+    },{
+      _id: 13,
+      image: "https://via.placeholder.com/250x250.png/09f/fff",
+      price: 4000,
+      productName: "Book1",
+      productDesc: "My favorite book1",
+      available: true,
+    },
+    {
+      _id: 14,
+      image: "https://via.placeholder.com/250x450.png/09f/fff",
+      price: 3000,
+      productName: "Book2",
+      productDesc: "My favorite book2",
+      available: false,
+    },
+    {
+      _id: 15,
+      image: "https://via.placeholder.com/250x450.png/09f/fff",
+      price: 2500,
+      productName: "Book3",
+      productDesc: "My favorite book3",
+      available: true,
+    },
+    {
+      _id: 16,
+      image: "https://via.placeholder.com/250x250.png/09f/fff",
+      price: 4000,
+      productName: "Book1",
+      productDesc: "My favorite book1",
+      available: true,
+    },
+    {
+      _id: 17,
+      image: "https://via.placeholder.com/250x450.png/09f/fff",
+      price: 3000,
+      productName: "Book2",
+      productDesc: "My favorite book2",
+      available: false,
+    },
+    {
+      _id: 18,
       image: "https://via.placeholder.com/250x450.png/09f/fff",
       price: 2500,
       productName: "Book3",
@@ -57,19 +161,10 @@ function Marketpalce() {
   return (
     <div className="marketPlace-container">
       <aside className="marketpost-aside-container">
-        <Subtotal />
-        <CartItem
-          productName={"Book1"}
-          image={"https://via.placeholder.com/180x180.png/09f/fff"}
-        />
-        <CartItem
-          productName={"Book2"}
-          image={"https://via.placeholder.com/280x380.png/09f/fff"}
-        />
-        <CartItem
-          productName={"Book3"}
-          image={"https://via.placeholder.com/480x580.png/09f/fff"}
-        />
+        <Subtotal cart={cart} />
+        <div className="items-overflow">
+          <CartItem cart={cart} removeItem={removeItem}/>
+        </div>
       </aside>
       <div className="marketpost-main-container">
         <MarketPost products={products} />
@@ -78,4 +173,4 @@ function Marketpalce() {
   );
 }
 
-export default Marketpalce;
+export default Marketplace;

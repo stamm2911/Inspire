@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { CartProvider } from "./utils/CartContext";
 
 import Navbar from "./components/navbar";
 import MarketPlace from "./pages/marketPlace";
@@ -16,7 +17,9 @@ export default function App() {
       <Router>
         <main>
           <Navbar />
-          <Route exact path="/marketplace" component={MarketPlace} />
+          <CartProvider>
+            <Route exact path="/marketplace" component={MarketPlace} />
+          </CartProvider>
         </main>
       </Router>
     </ApolloProvider>

@@ -20,7 +20,7 @@
 
 /* CART ITEMS SECTION---------------------------------------------------- */
 .marketpost-aside-container{
-  background: black;
+  background: rgb(165, 107, 107);
   width: 20vw;
   display: flex;
   flex-direction:column;
@@ -28,10 +28,20 @@
   padding: 10px;
 }
 
+.items-overflow{
+  /* background-color: orange; */
+  flex-direction:column;
+  align-items: center;
+  display: flex;
+  height: 100vmax;
+  width: max-content;
+  overflow: auto;
+}
+
 .subTotal-container{
   background: green;
   height: 50px;
-  width: 150px;
+  width: 175px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,7 +79,7 @@
 
 .marketpost-main-container{
   background: gray;
-  padding: 10px;
+  padding: 20px;
   width: 80vw;
   display: flex;
   flex-wrap:wrap;
@@ -84,7 +94,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 10px;
+  margin: 20px 20px 0 20px;
 }
 
 .market-post-container img {
