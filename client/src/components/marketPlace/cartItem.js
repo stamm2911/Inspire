@@ -1,11 +1,11 @@
 import React from "react";
 
-function cartItem() {
+function cartItem({productName, image}) {
   return (
     <article className="cartItem-container">
-      <img src="https://via.placeholder.com/180x180.png/09f/fff" alt="pic" />
+      <img src={image} alt="pic" />
       <section className='cartItem-description'>
-        <p>PRODUCT_NAME</p>
+        <p>{productName}</p>
         <button>X</button>
       </section>
     </article>

@@ -1,21 +1,29 @@
 import React from "react";
+import { v4 as uuidv4 } from 'uuid';
 
-function marketPost() {
+function marketPost({ products }) {
+  if (!products.length) {
+    return <h3>No Posts Yet</h3>;
+  }
   return (
-    <article className="market-post-container">
-      <img src="https://via.placeholder.com/250x250.png/09f/fff" alt="pic" />
-      <section className="market-post-info">
-        <div>
-          <p>$4,000</p>
-          <p>PRODUCT_NAME</p>
-          <p>PRODUCT_DESCRIPTION</p>
-          <p>QTY pz</p>
-        </div>
-        <div>
-          <button>Add</button>
-        </div>
-      </section>
-    </article>
+    <>
+      {products && products.map((product) => (
+        <article key={uuidv4()} className="market-post-container">
+          <img src={product.image} alt="pic" />
+          <section className="market-post-info">
+            <div>
+              <p>${product.price}</p>
+              <p>{product.productName}</p>
+              <p>{product.productDesc}</p>
+              <p>{product.available ? "Available" : "Not available"}</p>
+            </div>
+            <div>
+              <button>Add</button>
+            </div>
+          </section>
+        </article>
+      ))}
+    </>
   );
 }
 
