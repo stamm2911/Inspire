@@ -104,7 +104,8 @@ function Marketplace() {
       productName: "Book12",
       productDesc: "My favorite book3",
       available: true,
-    },{
+    },
+    {
       _id: 13,
       image: "https://via.placeholder.com/450x450.png/09f/fff",
       price: 1300,
@@ -161,9 +162,20 @@ function Marketplace() {
     <div className="marketPlace-container">
       <aside className="marketpost-aside-container">
         <Subtotal cart={cart} />
-        <button style={{background:'gray', padding:8, borderRadius:'10px', cursor: 'pointer'}}><i className="medium material-icons">payment</i><br></br>Proceed to payment</button>
+        <button
+          style={{
+            backgroundImage:
+            "linear-gradient(to bottom right,  rgb(168, 168, 168),rgb(110, 110, 110))",
+            padding: 8,
+            borderRadius: "10px",
+            cursor: "pointer",
+          }}
+        >
+          <i className="medium material-icons">payment</i>
+          <br></br>Proceed to payment
+        </button>
         <div className="items-overflow">
-          <CartItem cart={cart} removeItem={removeItem}/>
+          <CartItem cart={cart} removeItem={removeItem} />
         </div>
       </aside>
       <div className="marketpost-main-container">

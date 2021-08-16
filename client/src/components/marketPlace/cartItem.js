@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { v4 as uuidv4 } from "uuid";
 
 function CartItem({ cart, removeItem }) {
-  console.log(cart);
   if (cart.length < 1) {
     return <h4>No items</h4>;
   }

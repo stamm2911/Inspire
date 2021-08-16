@@ -42,7 +42,7 @@ function MarketPost({ products }) {
                     }}
                     onClick={() => addItem(product)}
                   >
-                    <i class="small material-icons">add_box</i>
+                    <i className="small material-icons">add_box</i>
                   </button>
                 ) : (
                   <button disabled
@@ -51,7 +51,7 @@ function MarketPost({ products }) {
                     }}
                     onClick={() => addItem(product)}
                   >
-                    <i class="small material-icons">add_box</i>
+                    <i className="small material-icons">add_box</i>
                   </button>
                 )}
               </div>
