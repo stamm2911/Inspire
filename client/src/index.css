@@ -134,6 +134,9 @@
     width: 35vw;
     box-shadow: 4px 0 10px rgb(156, 156, 156);
   }
+  .marketpost-aside-container button{
+    width: 100px;
+  }
   .cartItem-container {
     width: 120px;
   }
