@@ -13,20 +13,46 @@ function MarketPost({ products }) {
     <>
       {products &&
         products.map((product) => (
-          <article key={uuidv4()} className="market-post-container">
+          <article
+            key={uuidv4()}
+            style={{ opacity: product.available ? 1 : 0.5 }}
+            className="market-post-container"
+          >
             <img src={product.image} alt="pic" />
             <section className="market-post-info">
               <div>
-                <p>${product.price}</p>
-                <p>{product.productName}</p>
-                <p>{product.productDesc}</p>
-                <p>{product.available ? "Available" : "Not available"}</p>
+                <p style={{ fontSize: 25, margin: 2, fontWeight: "bold" }}>
+                  ${product.price}
+                </p>
+                <p style={{ fontSize: 15, margin: 2, fontWeight: "bold" }}>
+                  {product.productName}
+                </p>
+                <p style={{ fontSize: 15, margin: 2 }}>{product.productDesc}</p>
+                <p style={{ fontSize: 15, margin: 2, fontStyle: "italic" }}>
+                  {product.available ? "Available" : "Not available"}
+                </p>
               </div>
               <div>
                 {product.available ? (
-                  <button onClick={() => addItem(product)}>Add</button>
+                  <button
+                    style={{
+                      background: "transparent",
+                      color: "rgb(233, 233, 233)",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => addItem(product)}
+                  >
+                    <i class="small material-icons">add_box</i>
+                  </button>
                 ) : (
-                  <button disabled>Add</button>
+                  <button disabled
+                    style={{
+                      background: "transparent",
+                    }}
+                    onClick={() => addItem(product)}
+                  >
+                    <i class="small material-icons">add_box</i>
+                  </button>
                 )}
               </div>
             </section>

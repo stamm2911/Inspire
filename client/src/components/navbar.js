@@ -1,18 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { Link } from "react-router-dom";
 import M from "materialize-css/dist/js/materialize.min.js";
 
+const styles={
+  fontSize: 22
+}
+
 function Navbar() {
+  const [opacity, setOpacity] = useState(0);
   useEffect(() => {
     let elems = document.querySelectorAll(".sidenav");
+    setOpacity(1);
     M.Sidenav.init(elems);
   }, []);
 
   return (
     <>
-      <nav className='nav-bg'>
+      <nav style={{transition: 'all 2s', opacity:opacity}} className='nav-bg'>
         <div className="nav-wrapper">
-          <Link to="/main" className="brand-logo">
+          <Link style={{fontSize:35, fontStyle:'italic'}} to="/main" className="brand-logo">
             Inspire
           </Link>
           <Link to="#" data-target="mobile-demo" className="sidenav-trigger">
@@ -20,16 +26,16 @@ function Navbar() {
           </Link>
           <ul className="right hide-on-med-and-down">
             <li>
-              <Link to="/main">Main</Link>
+              <Link style={{...styles}} to="/main">Main</Link>
             </li>
             <li>
-              <Link to="/marketplace">Market palce</Link>
+              <Link style={{...styles}} to="/marketplace">Market palce</Link>
             </li>
             <li>
-              <Link to="/profile">Profile</Link>
+              <Link style={{...styles}} to="/profile">Profile</Link>
             </li>
             <li>
-              <Link to="/signin">Sign in</Link>
+              <Link style={{...styles}} to="/signin">Sign in</Link>
             </li>
           </ul>
         </div>

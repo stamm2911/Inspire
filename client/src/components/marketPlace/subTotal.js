@@ -8,7 +8,10 @@ function Subtotal({ cart }) {
         Subtotal: $
         {cart.length > 0 ? cartPrices.reduce((total, num) => total + num) : 0}
       </p>
-      <p>Items: {cart.length}</p>
+      <p>
+        <i className="small material-icons">shopping_cart</i>
+        {cart.length}
+      </p>
     </article>
   );
 }

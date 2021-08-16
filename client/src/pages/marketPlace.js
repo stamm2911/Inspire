@@ -7,8 +7,7 @@ import { QUERY_MARKETPOSTS } from "../utils/MarketPlaceQueries";
 import { useCartContext } from "../utils/CartContext";
 
 function Marketplace() {
-  const { cart, addItem, removeItem } = useCartContext();
-
+  const { cart, removeItem } = useCartContext();
   const products = [
     {
       _id: 1,
@@ -162,7 +161,7 @@ function Marketplace() {
     <div className="marketPlace-container">
       <aside className="marketpost-aside-container">
         <Subtotal cart={cart} />
-        <button>Proceed to payment</button>
+        <button style={{background:'gray', padding:8, borderRadius:'10px', cursor: 'pointer'}}><i className="medium material-icons">payment</i><br></br>Proceed to payment</button>
         <div className="items-overflow">
           <CartItem cart={cart} removeItem={removeItem}/>
         </div>

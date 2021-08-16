@@ -1,46 +1,50 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
+
 /* NAVBAR-------------------------------------------------- */
-.nav-bg{
-  background-color: rgb(0, 172, 172);
+.nav-bg {
+  background-image: linear-gradient(to right, rgb(255, 60, 0), rgb(255, 145, 0));
+  padding-left: 10px;
 }
 /* END NAVBAR-------------------------------------------------- */
 
-
-
-
 /* MARKETPLACE PAGE CONTAINER---------------------------------------------------- */
-.marketPlace-container{
-  background: green;
+.marketPlace-container {
+  /* background: green; */
   display: flex;
   flex-direction: row;
 }
 /* END MARKETPLACE PAGE CONTAINER---------------------------------------------------- */
 
-
-
-
 /* CART ITEMS SECTION---------------------------------------------------- */
-.marketpost-aside-container{
-  background: rgb(165, 107, 107);
+.marketpost-aside-container {
+  background: rgb(216, 216, 216);
+  box-shadow: 10px 0 10px rgb(156, 156, 156);
   width: 20vw;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
-  padding: 10px;
+  padding: 1px;
 }
 
-.items-overflow{
+.items-overflow {
   /* background-color: orange; */
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
   display: flex;
   height: 100vmax;
   width: max-content;
   overflow: auto;
+  margin-top: 15px;
 }
 
-.subTotal-container{
-  background: green;
-  height: 50px;
+.subTotal-container {
+  background: transparent;
+  color: rgb(105, 105, 105);
+  border-radius: 5px;
+  margin: 5px;
+  height: 70px;
   width: 175px;
   display: flex;
   flex-direction: column;
@@ -49,45 +53,44 @@
   font-size: 20px;
 }
 
-.cartItem-container{
-  background-color: rgb(183, 0, 255);
+
+.cartItem-container {
+  background-color: rgb(105, 105, 105);
+  box-shadow: 3px 7px 12px rgb(156, 156, 156);
+  border-radius: 15px;
   height: fit-content;
   width: 180px;
   margin: 10px;
 }
 
-.cartItem-container img{
+.cartItem-container img {
+  border-radius: 15px 15px 0 0;
   width: 180px;
   height: 180px;
   object-fit: cover;
-
 }
 
-.cartItem-description{
-  background-color: aqua;
+.cartItem-description {
+  margin: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
 }
 /* END CART ITEMS SECTION---------------------------------------------------- */
 
-
-
-
 /* MARKETPLACE POSTS SECTION----------------------------------------------------- */
 
-.marketpost-main-container{
-  background: gray;
+.marketpost-main-container {
+  /* background: gray; */
   padding: 20px;
   width: 80vw;
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 .market-post-container {
-  background-color: yellow;
+  /* background-color: yellow; */
   height: 340px;
   width: 250px;
   display: flex;
@@ -98,14 +101,15 @@
 }
 
 .market-post-container img {
-  border-radius: 15px;
+  border-radius: 15px 15px 0 0;
   height: 250px;
   width: 250px;
   object-fit: cover;
 }
 
 .market-post-info {
-  background-color: rgb(145, 145, 255);
+  background-color: rgb(105, 105, 105);
+  border-radius: 0 0 15px 15px;
   display: flex;
   justify-content: space-between;
   padding: 100px;
@@ -113,38 +117,36 @@
   padding: 10px;
 }
 
-/* END MARKETPLACE POSTS SECTION----------------------------------------------------- */ 
+/* END MARKETPLACE POSTS SECTION----------------------------------------------------- */
 
 @media screen and (max-width: 800px) {
   .market-post-container {
     width: fit-content;
-    background-color: orange;
   }
-  .marketpost-main-container{
-    background:pink;
+  .marketpost-main-container {
     width: 65vw;
   }
   .market-post-container img {
     width: 200px;
     object-fit: cover;
   }
-  .marketpost-aside-container{
+  .marketpost-aside-container {
     width: 35vw;
+    box-shadow: 4px 0 10px rgb(156, 156, 156);
   }
-  .cartItem-container{
+  .cartItem-container {
     width: 120px;
   }
-  .cartItem-container img{
+  .cartItem-container img {
     height: 120px;
     width: 120px;
     object-fit: cover;
   }
-  .cartItem-description{
+  .cartItem-description {
     font-size: 90%;
   }
-  .subTotal-container{
+  .subTotal-container {
     width: 120px;
     font-size: 100%;
   }
 }
-
