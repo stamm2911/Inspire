@@ -1,5 +1,5 @@
 const db = require("./connection");
-const { Profile, Product } = require("../models");
+const { Profile, Product, Post } = require("../models");
 
 db.once("open", async () => {
 
@@ -12,6 +12,35 @@ db.once("open", async () => {
         password: 'carlos'
     })
     console.log('profiles seeded');
+
+    await Post.deleteMany();
+    await Post.insertMany([
+        {
+            picture: "",
+            description: "My first Post",
+            comments: [
+                {
+                    text: "This is the first comment"
+                },
+                {
+                    text: "This is my second comment"
+                }
+            ]
+        },
+        {
+            picture: "",
+            description: "My second post",
+            comments: [
+                {
+                    text: "This is the third comment"
+                },
+                {
+                    text: "This is my fourth comment"
+                }
+            ]
+        }
+    ])
+    console.log('posts seeded');
 
     await Product.deleteMany();
     const products = await Product.insertMany([
