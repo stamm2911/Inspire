@@ -53,23 +53,24 @@ db.once("open", async () => {
   console.log("products seeded");
 
   // Profile Seeds
-  await Profile.deleteMany();
-  await Profile.create({
-    name: 'Bob Smith',
-    email: 'BobSmith@mail.com',
-    password: 'verySafePassword1',
-    cart: [
-      {
-        products: [products[0]._id, products[1]._id]
-      }
-    ]
-  });
+  // await Profile.deleteMany();
+  // await Profile.create({
+  //   name: 'Bob Smith',
+  //   email: 'BobSmith@mail.com',
+  //   password: 'verySafePassword1',
+  //   cart: [
+  //     {
+  //       products: [products[0]._id, products[1]._id]
+  //     }
+  //   ]
+  // });
 
-  await User.create({
-    name: 'Richard Jones',
-    email: 'RichardJones@mail.com',
-    password: 'verySafePassword2',
-  });
+  // await User.create({
+  //   name: 'Richard Jones',
+  //   email: 'RichardJones@mail.com',
+  //   password: 'verySafePassword2',
+  // });
 
-  console.log("profiles seeded");  
+  // console.log("profiles seeded");  
+  process.exit();
 });

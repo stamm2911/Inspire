@@ -32,16 +32,13 @@ const typeDefs = gql`
   type Query {
     products(name: String): [Product]
     product(_id: ID!): Product
-    profile: Profile
     cart(_id: ID!): Cart
   }
 
   type Mutation {
-    addProfile(name: String!, email: String!, password: String!): Auth
     addCart(products: [ID]!): Cart
     updateUser(name: String, email: String, password: String): User
     updateProduct(_id: ID!, price: Float!): Product
-    login(email: String!, password: String!): Auth
   }
 `;
 

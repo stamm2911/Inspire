@@ -30,9 +30,9 @@ profileSchema.pre('save', async function(next) {
   next();
 });
 
-userSchema.methods.isCorrectPassword = async function(password) {
+profileSchema.methods.isCorrectPassword = async function(password) {
   return await bcrypt.compare(password, this.password);
 };
 
-const Profile = model('Profile', profileSchema);
+const Profile = mongoose.model('Profile', profileSchema);
 module.exports = Profile;

@@ -33,18 +33,18 @@ const resolvers = {
   },
 
   Mutation: {
-    addOrder: async (parent, { products }, context) => {
-      console.log(context);
-      if (context.profile) {
-        const cart = new Cart({ products });
-        await Profile.findByIdAndUpdate(context.user._id, {
-          $push: { carts: cart },
-        });
-        return order;
-      }
+    // addOrder: async (parent, { products }, context) => {
+    //   console.log(context);
+    //   if (context.profile) {
+    //     const cart = new Cart({ products });
+    //     await Profile.findByIdAndUpdate(context.user._id, {
+    //       $push: { carts: cart },
+    //     });
+    //     return order;
+    //   }
 
-      throw new AuthenticationError("Not logged in");
-    },
+    //   throw new AuthenticationError("Not logged in");
+    // },
 
     updateProduct: async (parent, { _id, availability }) => {
       // const decrement = Math.abs(quantity) * -1;
