@@ -4,10 +4,11 @@ export const QUERY_MARKETPOSTS = gql`
   query allMarketPosts {
     marketPosts {
       _id
+      name
+      description
       price
-      productName
-      productDesc
-      available
+      availability
+      image
     }
   }
 `;

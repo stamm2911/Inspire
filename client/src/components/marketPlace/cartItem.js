@@ -14,7 +14,7 @@ function CartItem({ cart, removeItem }) {
             <img src={item.image} alt="pic" />
             <section className="cartItem-description">
               <p style={{ fontSize: 20, margin: 2, fontWeight: "bold" }}>
-                {item.productName}
+                {item.name}
               </p>
               <button
                 style={{
