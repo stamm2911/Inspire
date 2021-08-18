@@ -1,5 +1,5 @@
 const db = require("./connection");
-const { Profile, Product, Post } = require("../models");
+const { Profile, Product, Post, Comment } = require("../models");
 
 db.once("open", async () => {
 
@@ -14,33 +14,30 @@ db.once("open", async () => {
     console.log('profiles seeded');
 
     await Post.deleteMany();
-    await Post.insertMany([
+    await Post.create([
         {
             picture: "",
             description: "My first Post",
-            comments: [
-                {
-                    text: "This is the first comment"
-                },
-                {
-                    text: "This is my second comment"
-                }
-            ]
+            comments: []
         },
         {
             picture: "",
             description: "My second post",
-            comments: [
-                {
-                    text: "This is the third comment"
-                },
-                {
-                    text: "This is my fourth comment"
-                }
-            ]
+            comments: []
         }
     ])
     console.log('posts seeded');
+    
+    await Comment.deleteMany();
+    const comment = await Comment.create({
+        text: "My first comment"
+    })
+    console.log('comments seeded');
+    await Post.findOneAndUpdate({ description: "My first Post" }, {
+        $push: { comments: comment._id }},
+        { new: true }
+    )
+    console.log("comments seeded")
 
     await Product.deleteMany();
     const products = await Product.insertMany([
