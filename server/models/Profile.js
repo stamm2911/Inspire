@@ -1,20 +1,38 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
+const { Schema } = require('mongoose');
+const bcrypt = require('bcrypt');
+const Cart = require('./Cart');
 
 const profileSchema = new Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
-    trim: true,
+    trim: true
   },
-  skills: [
-    {
-      type: String,
-      trim: true,
-    },
-  ],
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 5
+  },
+  cart: [Cart.schema]
 });
 
-const Profile = model('Profile', profileSchema);
+profileSchema.pre('save', async function(next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+  next();
+});
 
+userSchema.methods.isCorrectPassword = async function(password) {
+  return await bcrypt.compare(password, this.password);
+};
+
+const Profile = model('Profile', profileSchema);
 module.exports = Profile;
