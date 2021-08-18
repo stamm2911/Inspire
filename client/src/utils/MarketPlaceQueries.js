@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const QUERY_MARKETPOSTS = gql`
   query allMarketPosts {
-    marketPosts {
+    products {
       _id
       name
       description
