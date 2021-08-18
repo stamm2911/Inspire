@@ -9,8 +9,8 @@ const styles={
 function Navbar() {
   const [opacity, setOpacity] = useState(0);
   useEffect(() => {
-    let elems = document.querySelectorAll(".sidenav");
     setOpacity(1);
+    let elems = document.querySelectorAll(".sidenav");
     M.Sidenav.init(elems);
   }, []);
 

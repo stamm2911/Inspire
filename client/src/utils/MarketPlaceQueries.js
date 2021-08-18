@@ -12,4 +12,11 @@ export const QUERY_MARKETPOSTS = gql`
   }
 `;
 
+export const QUERY_CHECKOUT = gql`
+  query getCheckout($products: [ID]!) {
+    checkout(products: $products) {
+      session
+    }
+  }
+`;
 

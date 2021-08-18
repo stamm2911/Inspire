@@ -5,6 +5,7 @@ import Subtotal from "../components/marketPlace/subTotal";
 import { useQuery } from "@apollo/client";
 import { QUERY_MARKETPOSTS } from "../utils/MarketPlaceQueries";
 import { useCartContext } from "../utils/CartContext";
+import Auth from '../utils/auth'
 
 function Marketplace() {
   const { cart, removeItem } = useCartContext();
@@ -157,23 +158,28 @@ function Marketplace() {
 
   const { loading, data } = useQuery(QUERY_MARKETPOSTS);
   // const products = data?.products || [];
-
+  const login = true;
   return (
     <div className="marketPlace-container">
       <aside className="marketpost-aside-container">
         <Subtotal cart={cart} />
-        <button
-          style={{
-            backgroundImage:
-            "linear-gradient(to bottom right,  rgb(168, 168, 168),rgb(110, 110, 110))",
-            padding: 8,
-            borderRadius: "10px",
-            cursor: "pointer",
-          }}
-        >
-          <i className="medium material-icons">payment</i>
-          <br></br>Proceed to payment
-        </button>
+        {/* change the following login for Auth.loggedIn() */}
+        {login ? (
+          <button
+            style={{
+              backgroundImage:
+                "linear-gradient(to bottom right,  rgb(168, 168, 168),rgb(110, 110, 110))",
+              padding: 8,
+              borderRadius: "10px",
+              cursor: "pointer",
+            }}
+          >
+            <i className="medium material-icons">payment</i>
+            <br></br>Proceed to payment
+          </button>
+        ) : (
+          'Sign in to checkout'
+        )}
         <div className="items-overflow">
           <CartItem cart={cart} removeItem={removeItem} />
         </div>
