@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { CartProvider } from "./utils/CartContext";
 
-function App() {
+import Navbar from "./components/navbar";
+import MarketPlace from "./pages/marketPlace";
+
+const client = new ApolloClient({
+  uri: "/graphql",
+  cache: new InMemoryCache(),
+});
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <Router>
+        <main>
+          <Navbar />
+          <CartProvider>
+            <Route exact path="/marketplace" component={MarketPlace} />
+          </CartProvider>
+        </main>
+      </Router>
+    </ApolloProvider>
   );
 }
-
-export default App;
