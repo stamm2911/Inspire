@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { Profile, Product } = require('../models');
+const { Product } = require('../models');
 
 db.once('open', async () => {
 
