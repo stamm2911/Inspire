@@ -15,7 +15,7 @@ function MarketPost({ products }) {
         products.map((product) => (
           <article
             key={uuidv4()}
-            style={{ opacity: product.available ? 1 : 0.5 }}
+            style={{ opacity: product.availability ? 1 : 0.5 }}
             className="market-post-container"
           >
             <img src={product.image} alt="pic" />
@@ -25,15 +25,15 @@ function MarketPost({ products }) {
                   ${product.price}
                 </p>
                 <p style={{ fontSize: 15, margin: 2, fontWeight: "bold" }}>
-                  {product.productName}
+                  {product.name}
                 </p>
-                <p style={{ fontSize: 15, margin: 2 }}>{product.productDesc}</p>
+                <p style={{ fontSize: 15, margin: 2 }}>{product.description}</p>
                 <p style={{ fontSize: 15, margin: 2, fontStyle: "italic" }}>
-                  {product.available ? "Available" : "Not available"}
+                  {product.availability ? "Available" : "Not available"}
                 </p>
               </div>
               <div>
-                {product.available ? (
+                {product.availability ? (
                   <button
                     style={{
                       background: "transparent",
