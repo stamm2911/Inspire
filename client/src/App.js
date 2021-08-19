@@ -1,18 +1,27 @@
 import React from "react";
-import Home from "./components/home";
-import Login from "./components/login";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { CartProvider } from "./utils/CartContext";
+
 import Navbar from "./components/navbar";
-import Marketplace from "./components/marketplace";
-import User from "./components/user";
+import MarketPlace from "./pages/marketPlace";
+
+const client = new ApolloClient({
+  uri: "/graphql",
+  cache: new InMemoryCache(),
+});
 
 export default function App() {
   return (
-    <main>
-      <Navbar />
-      <Home />
-      <Marketplace />
-      <User />
-      <Login />
-    </main>
+    <ApolloProvider client={client}>
+      <Router>
+        <main>
+          <Navbar />
+          <CartProvider>
+            <Route exact path="/marketplace" component={MarketPlace} />
+          </CartProvider>
+        </main>
+      </Router>
+    </ApolloProvider>
   );
 }
