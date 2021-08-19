@@ -12,7 +12,7 @@ const resolvers = {
           $regex: name,
         };
       }
-      return await Product.find(params).populate("name");
+      return await Product.find({});
     },
     product: async (paren, { _id }) => {
       return await Product.findById(_id).populate("name");
