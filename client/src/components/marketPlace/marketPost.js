@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from "uuid";
 
 function MarketPost({ products }) {
   const { addItem } = useCartContext();
-
   if (!products.length) {
     return <h3>No Posts Yet</h3>;
   }

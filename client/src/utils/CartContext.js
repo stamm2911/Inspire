@@ -22,14 +22,17 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeItem = (oldItem) => {
-    oldItem.toDelete = "delet";
-    const newCart = cart.filter((item) => {
-      return !item.toDelete;
-    });
+    const newCart = [...cart];
+    for (let i = 0; i < newCart.length; i++) {
+      if (newCart[i]._id === oldItem._id) {
+        newCart.splice(i, 1);
+        break;
+      }
+    }
     setCart(newCart);
   };
 
-   return (
+  return (
     <CartContext.Provider value={{ cart, addItem, removeItem }}>
       {children}
     </CartContext.Provider>
