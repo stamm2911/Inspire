@@ -9,7 +9,7 @@ import DeleteButton from "./DeleteButton";
 import MyPopup from "../util/MyPopup";
 
 function PostCard({
-  post: { body, createdAt, id, username, likeCount, commentCount, likes },
+  post: { description, createdAt, id, username, likeCount, comments, likes },
 }) {
   const { user } = useContext(AuthContext);
 
@@ -25,7 +25,7 @@ function PostCard({
         <Card.Meta as={Link} to={`/posts/${id}`}>
           {moment(createdAt).fromNow(true)}
         </Card.Meta>
-        <Card.Description>{body}</Card.Description>
+        <Card.Description>{description}</Card.Description>
       </Card.Content>
       <Card.Content extra>
         <LikeButton user={user} post={{ id, likes, likeCount }} />
@@ -35,7 +35,7 @@ function PostCard({
               <Icon name="comments" />
             </Button>
             <Label basic color="blue" pointing="left">
-              {commentCount}
+              {comments.text}
             </Label>
           </Button>
         </MyPopup>
