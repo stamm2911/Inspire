@@ -1,7 +1,6 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-  
   type Product {
     _id: ID
     name: String
@@ -10,7 +9,9 @@ const typeDefs = gql`
     availability: Boolean
     image: String
   }
-  
+  type Checkout {
+    session: ID
+  }
   type Cart {
     _id: ID
     total: Float
@@ -33,6 +34,7 @@ const typeDefs = gql`
     products(name: String): [Product]
     product(_id: ID!): Product
     cart(_id: ID!): Cart
+    checkout(products: [ID]!): Checkout
   }
 
   type Mutation {

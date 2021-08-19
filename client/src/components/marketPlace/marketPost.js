@@ -1,8 +1,14 @@
 import React from "react";
+import { useQuery } from "@apollo/client";
 import { useCartContext } from "../../utils/CartContext";
 import { v4 as uuidv4 } from "uuid";
+import { QUERY_MARKETPOSTS } from "../../utils/MarketPlaceQueries";
 
-function MarketPost({ products }) {
+
+function MarketPost({  }) {
+  const { loading, data } = useQuery(QUERY_MARKETPOSTS);
+  const products = data?.products || [];
+
   const { addItem } = useCartContext();
   if (!products.length) {
     return <h3>No Posts Yet</h3>;

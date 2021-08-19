@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { Profile, Product, Cart } = require("../models");
+const { Profile, Product, Cart, Order } = require("../models");
 const { signToken } = require("../utils/auth");
 const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 
@@ -14,8 +14,51 @@ const resolvers = {
       }
       return await Product.find({});
     },
+    
     product: async (paren, { _id }) => {
       return await Product.findById(_id).populate("name");
+    },
+
+    checkout: async (parent, args, context) => {
+      // console.log('context',context)
+      console.log('args',args)
+      const url = new URL(context.headers.referer).origin;
+      console.log('pre product')
+      const order = new Order({ products: args.products });
+      // const line_items = [];
+      
+      const { products } = await order.populate("products").execPopulate();
+      console.log('post product',products)
+
+      // for (let i = 0; i < products.length; i++) {
+      //   const product = await stripe.products.create({
+      //     name: products[i].name,
+      //     description: products[i].description,
+      //     images: [`${url}/images/${products[i].image}`],
+      //   });
+
+      //   const price = await stripe.prices.create({
+      //     product: product.id,
+      //     unit_amount: products[i].price * 100,
+      //     currency: "usd",
+      //   });
+
+      //   line_items.push({
+      //     price: price.id,
+      //     quantity: 1,
+      //   });
+      // }
+
+      // const session = await stripe.checkout.sessions.create({
+      //   payment_method_types: ["card"],
+      //   line_items,
+      //   mode: "payment",
+      //   success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+      //   cancel_url: `${url}/`,
+      // });
+      // console.log('session.id:',session.id)
+      // return { session: 'cs_test_a1ggxFab9LK3R42sSID1kZmiub8VjZmYNq3raGdudFthNS0UBpaqcvlqzG' };
+      return { session:'cs_test_a1ggxFab9LK3R42sSID1kZmiub8VjZmYNq3raGdudFthNS0UBpaqcvlqzG'}
     },
 
     cart: async (parent, { _id }, context) => {
