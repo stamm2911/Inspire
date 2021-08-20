@@ -11,7 +11,7 @@ function MarketPost({  }) {
 
   const { addItem } = useCartContext();
   if (!products.length) {
-    return <h3>No Posts Yet</h3>;
+    return <h3>Loading...</h3>;
   }
 
   return (
