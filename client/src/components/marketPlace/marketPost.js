@@ -30,7 +30,7 @@ function MarketPost({  }) {
                   ${product.price}
                 </p>
                 <p style={{ fontSize: 15, margin: 2, fontWeight: "bold" }}>
-                  {product.image}
+                  {product.name}
                 </p>
                 <p style={{ fontSize: 15, margin: 2 }}>{product.description}</p>
                 <p style={{ fontSize: 15, margin: 2, fontStyle: "italic" }}>
