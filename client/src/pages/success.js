@@ -14,6 +14,7 @@ function Success() {
             place
           </h2>
         </Link>
+        <img src='images/toyota-cruiser.jpg' alt='pic'/>
       </div>
     </>
   );
