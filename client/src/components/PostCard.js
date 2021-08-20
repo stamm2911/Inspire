@@ -13,6 +13,8 @@ function PostCard({
 }) {
   const { user } = useContext(AuthContext);
 
+  console.log(comments);
+
   return (
     <Card fluid>
       <Card.Content>
@@ -34,9 +36,11 @@ function PostCard({
             <Button color="blue" basic>
               <Icon name="comments" />
             </Button>
-            <Label basic color="blue" pointing="left">
-              {comments.text}
-            </Label>
+            {comments.map((comment) => (
+              <Label basic color="white" pointing="left">
+                {comment.text}
+              </Label>
+            ))}
           </Button>
         </MyPopup>
         {user && user.username === username && <DeleteButton postId={id} />}

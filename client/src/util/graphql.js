@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+import { gql as apolloGql } from '@apollo/client';
 
 export const FETCH_POSTS_QUERY = gql`
   {
@@ -19,6 +20,16 @@ export const FETCH_POSTS_QUERY = gql`
         # createdAt
         text
       }
+    }
+  }
+`;
+
+export const FETCH_PROFILE =apolloGql`
+  query getProfile($profileId:ID!){
+    profile(profileId: $profileId) {
+      _id
+      firstName
+      lastName
     }
   }
 `;

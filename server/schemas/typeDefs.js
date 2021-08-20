@@ -29,7 +29,7 @@ const typeDefs = gql`
     post(postId: ID!): Post
   }
   type Mutation {
-    addProfile(firstName: String!, lastName: String!, email: String!, password: String!): Profile
+    addProfile(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addPost(picture: String, description: String!): Post
     addComment(text: String, postId: ID!): Post
