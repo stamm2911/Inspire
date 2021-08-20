@@ -13,6 +13,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
+// import SinglePost from './pages/SinglePost';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -43,6 +44,7 @@ function App() {
               <Route exact path='/' component={Home} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/signup' component={Signup} />
+              {/* <Route exact path="/posts/:postId" component={SinglePost} /> */}
               {/* <Route exact path='/success' component={Success} /> */}
               {/* <Route exact path='/orderHistory' component={OrderHistory} />
               <Route exact path='/products/:id' component={Detail} /> */}

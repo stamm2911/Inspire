@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+    
+  }
+  body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+    background-image: linear-gradient(170deg, #ebebebea 0%, #c8c8c8 90%);
+  }
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.page-title {
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.input-field {
+    display: flex;
+    border-radius: 5px;
+    position: absolute;
+    margin: initial;
+} 
+ 
+#input {
+    background-color: #33333380;
+    color: #eee;
+    min-width: 50ch;
+    padding: 15px 15px 15px 45px;
+    font-size: 1.3em;
+    border: none;
+    border-radius: 5px;
+  }
+
+.submit-button{
+    border-radius: 5px;
+    position:relative;
+    margin:inherit;
+    background-color: teal;
+
+}
+
+.page-title {
+    display: flex;
+    justify-content: center;
+}
+
+.fade {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.card-container {
+    display: flex;
+    min-width: 50ch;
+    padding: clamp(1.5rem, 20vh, 10rem) 0 0;
+    color: white;
+    box-shadow: 0 1em 2em rgb(0 0 0 / 0.2);
+    border-radius: 0.5rem;
+}
+
+.card-body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.card-description {
+    color:teal;
+    align-items: baseline;
+    justify-content: center;
+    text-align: center;
+}
+

@@ -1,10 +1,10 @@
 import React from "react";
-import { Button, Form } from "semantic-ui-react";
 import { useMutation } from "@apollo/react-hooks";
 
 import { useForm } from "../util/hooks";
 // import { FETCH_POSTS_QUERY } from "../util/graphql";
 import { CREATE_POST_MUTATION } from "../util/mutations";
+import "../pages/styles.css"
 
 function PostForm() {
   const { values, onChange, onSubmit } = useForm(createPostCallback, {
@@ -12,7 +12,7 @@ function PostForm() {
   });
 
   const [addPost, { error }] = useMutation(CREATE_POST_MUTATION, {
-    variables: values.description,
+    variables: {picture: "", description: values.description},
     // update(proxy, result) {
     //   const data = proxy.readQuery({
     //     query: FETCH_POSTS_QUERY,
@@ -25,25 +25,28 @@ function PostForm() {
 
   function createPostCallback() {
     addPost();
+    // window.location = "/";
   }
 
   return (
     <>
-      <Form onSubmit={onSubmit}>
+      <div className= "form-container" onSubmit={onSubmit}>
         <h2>Create a post:</h2>
-        <Form.Field>
-          <Form.Input
-            placeholder="Hi World!"
+        <div>
+          <input
+            className= "input-field"
+            id="input"
+            placeholder="Hello World!"
             name="description"
             onChange={onChange}
             value={values.description}
             // error={error ? true : false}
           />
-          <Button type="submit" color="teal">
+          <button className="submit-button" type="submit" color="teal">
             Submit
-          </Button>
-        </Form.Field>
-      </Form>
+          </button>
+        </div>
+      </div>
       {/* {error && (
         <div className="ui error message" style={{ marginBottom: 20 }}>
           <ul className="list">

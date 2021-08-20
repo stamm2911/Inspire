@@ -6,6 +6,8 @@ import { AuthContext } from "../context/auth";
 import PostCard from "../components/PostCard";
 import PostForm from "../components/PostForm";
 import { FETCH_POSTS_QUERY } from "../util/graphql";
+import "./styles.css"
+
 
 function Home() {
   const { user } = useContext(AuthContext);
@@ -13,28 +15,28 @@ function Home() {
   console.log(data);
   const posts = data?.posts || [];
   return (
-    <Grid columns={1}>
-      <Grid.Row className="page-title">
+    <div className="container">
+      <div className="page-title">
         <h1>Recent Posts</h1>
-      </Grid.Row>
-      <Grid.Row>
-        <Grid.Column>
+      </div>
+      <div>
+        <div>
           <PostForm />
-        </Grid.Column>
+        </div>
         {loading ? (
           <h1>Loading posts..</h1>
         ) : (
           <Transition.Group>
             {posts &&
               posts.map((post) => (
-                <Grid.Column key={post._id} style={{ marginBottom: 20 }}>
+                <div key={post._id} style={{ marginBottom: 20 }}>
                   <PostCard key={post._id} post={post} />
-                </Grid.Column>
+                </div>
               ))}
           </Transition.Group>
         )}
-      </Grid.Row>
-    </Grid>
+      </div>
+    </div>
   );
 }
 

@@ -50,7 +50,7 @@ const resolvers = {
 
     addPost: async(parent, args) => {
       const post = await Post.create(args);
-      return { post }
+      return post
     },
 
     addComment: async(parent, args) => {
