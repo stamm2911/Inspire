@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './reset.css'
 import './index.css';
 import App from './App';
+import 'materialize-css/dist/css/materialize.min.css'
 
 ReactDOM.render(
   <React.StrictMode>
