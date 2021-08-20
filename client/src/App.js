@@ -5,6 +5,7 @@ import { CartProvider } from "./utils/CartContext";
 
 import Navbar from "./components/navbar";
 import MarketPlace from "./pages/marketPlace";
+import Success from "./pages/success";
 
 const client = new ApolloClient({
   uri: "/graphql",
@@ -19,6 +20,7 @@ export default function App() {
           <Navbar />
           <CartProvider>
             <Route exact path="/marketplace" component={MarketPlace} />
+            <Route exact path="/success" component={Success} />
           </CartProvider>
         </main>
       </Router>

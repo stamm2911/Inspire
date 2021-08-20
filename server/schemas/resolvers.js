@@ -25,40 +25,46 @@ const resolvers = {
       const url = new URL(context.headers.referer).origin;
       console.log('pre product')
       const order = new Order({ products: args.products });
-      // const line_items = [];
-      
+      const line_items = [];
+      console.log('order:',order)
       const { products } = await order.populate("products").execPopulate();
-      console.log('post product',products)
+      console.log('post product:',products)
 
-      // for (let i = 0; i < products.length; i++) {
-      //   const product = await stripe.products.create({
-      //     name: products[i].name,
-      //     description: products[i].description,
-      //     images: [`${url}/images/${products[i].image}`],
-      //   });
+      for (let i = 0; i < products.length; i++) {
+        const product = await stripe.products.create({
+          name: products[i].name,
+          description: products[i].description,
+          // images: [`${products[i].image}`],
+        });
 
-      //   const price = await stripe.prices.create({
-      //     product: product.id,
-      //     unit_amount: products[i].price * 100,
-      //     currency: "usd",
-      //   });
+        console.log('product:',product)
 
-      //   line_items.push({
-      //     price: price.id,
-      //     quantity: 1,
-      //   });
-      // }
+        const price = await stripe.prices.create({
+          product: product.id,
+          unit_amount: products[i].price * 100,
+          currency: "usd",
+        });
 
-      // const session = await stripe.checkout.sessions.create({
-      //   payment_method_types: ["card"],
-      //   line_items,
-      //   mode: "payment",
-      //   success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-      //   cancel_url: `${url}/`,
-      // });
-      // console.log('session.id:',session.id)
-      // return { session: 'cs_test_a1ggxFab9LK3R42sSID1kZmiub8VjZmYNq3raGdudFthNS0UBpaqcvlqzG' };
-      return { session:'cs_test_a1ggxFab9LK3R42sSID1kZmiub8VjZmYNq3raGdudFthNS0UBpaqcvlqzG'}
+        console.log('price:',price)
+
+        line_items.push({
+          price: price.id,
+          quantity: 1,
+        });
+      }
+
+      console.log('line_items:',line_items)
+
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        line_items,
+        mode: "payment",
+        // success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        success_url: `${url}/success`,
+        cancel_url: `${url}/`,
+      });
+      console.log('session.id:',session.id)
+      return { session:session.id}
     },
 
     cart: async (parent, { _id }, context) => {

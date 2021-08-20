@@ -19,7 +19,7 @@ function Marketplace() {
   useEffect(() => {
     if (data) {
       stripePromise.then((res) => {
-        // res.redirectToCheckout({ sessionId: data.checkout.session });
+        res.redirectToCheckout({ sessionId: data.checkout.session });
       });
     }
   }, [data]);
@@ -179,18 +179,15 @@ function Marketplace() {
   // console.log(products2);
 
   function submitCheckout() {
-    const productIds = ["611dd3e9dff9fd5f683c5cc3"];
+    const productIds = [];
 
-    // state.cart.forEach((item) => {
-    //   for (let i = 0; i < item.purchaseQuantity; i++) {
-    //     productIds.push(item._id);
-    //   }
-    // });
-
+    cart.forEach((item) => {
+      productIds.push(item._id);
+    });
+    console.log(productIds)
     getCheckout({
       variables: { products: productIds },
     });
-    console.log(productIds);
   }
 
   return (

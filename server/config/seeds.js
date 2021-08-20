@@ -17,7 +17,7 @@ db.once('open', async () => {
       name: 'Toyota RAV4',
       description: 'Toyota RAV4 2018 67,000KM',
       price: 19800,
-      availability: true,
+      availability: false,
       image: 'images/toyota-rav4.jpg',
     },
     {
@@ -45,7 +45,7 @@ db.once('open', async () => {
       name: 'Toyota Tundra',
       description: 'Toyota Tundra 2014 50,000 KM',
       price: 16900,
-      availability: true,
+      availability: false,
       image: 'images/toyota-tundra.jpg',
     },
   ]);
