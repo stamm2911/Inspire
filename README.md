@@ -44,14 +44,20 @@ To install the necessary packages, open the terminal and run `npm install`. To d
 <!-- Agregar imagenes y demo a un folder assets y linkear-->
 Login / Sign-Up
 ![image]()
+
 Social Media
 ![image]()
+
 Marketplace
 ![image]()
+
 Stripe
 ![image]()
+
 Walkthrough Demo
 ![gif]()
+
+
 ## Contributors
 <!-- Agregar github de carlos -->
 Visit our GitHubs: [stamm2911](https://github.com/stamm2911), [ejpascualj](https://github.com/ejpascualj), [00anp](https://github.com/00anp), [Enrique246](https://github.com/Enrique246), []()
