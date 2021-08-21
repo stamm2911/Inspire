@@ -31,20 +31,21 @@ function PostForm() {
   return (
     <>
       <form className="form-container" onSubmit={onSubmit}>
-        <h2>Create a post:</h2>
+        {/* <h2>Create a post:</h2> */}
         <div>
           <input
             className="input-field"
             id="input"
-            placeholder="Hello World!"
+            placeholder="What are you thinking about...?"
             name="description"
             onChange={onChange}
             value={values.description}
             // error={error ? true : false}
           />
-          <button className="submit-button" type="submit" color="teal">
+          {/* <button className="submit-button" type="submit" color="teal">
             Submit
-          </button>
+          </button> */}
+          <button class="waves-effect waves-light btn" type="submit">Submit</button>
         </div>
       </form>
       {/* {error && (

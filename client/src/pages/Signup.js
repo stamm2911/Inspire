@@ -33,6 +33,7 @@ function Signup(props) {
 
   return (
     <div className="container my-1">
+      <br></br>
       <Link to="/">← Go to Login</Link>
 
       <h2>Signup</h2>
@@ -78,7 +79,10 @@ function Signup(props) {
           />
         </div>
         <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
+          {/* <button type="submit">Submit</button> */}
+          <button class="waves-effect waves-light btn" type="submit">
+            Submit
+          </button>
         </div>
       </form>
     </div>

@@ -1,7 +1,7 @@
-import React, { useContext, useState, useRef } from 'react';
-import gql from 'graphql-tag';
-import { useQuery, useMutation } from '@apollo/react-hooks';
-import moment from 'moment';
+import React, { useContext, useState, useRef } from "react";
+import gql from "graphql-tag";
+import { useQuery, useMutation } from "@apollo/react-hooks";
+import moment from "moment";
 import {
   Button,
   Card,
@@ -9,42 +9,42 @@ import {
   Grid,
   Image,
   Icon,
-  Label
-} from 'semantic-ui-react';
+  Label,
+} from "semantic-ui-react";
 
-import { AuthContext } from '../context/auth';
-import LikeButton from '../components/LikeButton';
-import DeleteButton from '../components/DeleteButton';
-import MyPopup from '../util/MyPopup';
+import { AuthContext } from "../context/auth";
+import LikeButton from "../components/LikeButton";
+import DeleteButton from "../components/DeleteButton";
+import MyPopup from "../util/MyPopup";
 
 function SinglePost(props) {
   const postId = props.match.params.postId;
   const { user } = useContext(AuthContext);
   const commentInputRef = useRef(null);
 
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState("");
 
   const {
-    data: { getPost }
+    data: { getPost },
   } = useQuery(FETCH_POST_QUERY, {
     variables: {
-      postId
-    }
+      postId,
+    },
   });
 
   const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
     update() {
-      setComment('');
+      setComment("");
       commentInputRef.current.blur();
     },
     variables: {
       postId,
-      body: comment
-    }
+      body: comment,
+    },
   });
 
   function deletePostCallback() {
-    props.history.push('/');
+    props.history.push("/");
   }
 
   let postMarkup;
@@ -59,7 +59,7 @@ function SinglePost(props) {
       comments,
       likes,
       likeCount,
-      commentCount
+      commentCount,
     } = getPost;
 
     postMarkup = (
@@ -86,7 +86,7 @@ function SinglePost(props) {
                   <Button
                     as="div"
                     labelPosition="right"
-                    onClick={() => console.log('Comment on post')}
+                    onClick={() => console.log("Comment on post")}
                   >
                     <Button basic color="blue">
                       <Icon name="comments" />
@@ -118,7 +118,7 @@ function SinglePost(props) {
                       <button
                         type="submit"
                         className="ui button teal"
-                        disabled={comment.trim() === ''}
+                        disabled={comment.trim() === ""}
                         onClick={submitComment}
                       >
                         Submit
@@ -149,7 +149,7 @@ function SinglePost(props) {
 }
 
 const SUBMIT_COMMENT_MUTATION = gql`
-  mutation($postId: String!, $body: String!) {
+  mutation ($postId: String!, $body: String!) {
     createComment(postId: $postId, body: $body) {
       id
       comments {
@@ -164,7 +164,7 @@ const SUBMIT_COMMENT_MUTATION = gql`
 `;
 
 const FETCH_POST_QUERY = gql`
-  query($postId: ID!) {
+  query ($postId: ID!) {
     getPost(postId: $postId) {
       id
       body

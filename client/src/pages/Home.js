@@ -6,8 +6,7 @@ import { AuthContext } from "../context/auth";
 import PostCard from "../components/PostCard";
 import PostForm from "../components/PostForm";
 import { FETCH_POSTS_QUERY } from "../util/graphql";
-import "./styles.css"
-
+import "./styles.css";
 
 function Home() {
   const { user } = useContext(AuthContext);
@@ -16,12 +15,12 @@ function Home() {
   const posts = data?.posts || [];
   return (
     <div className="container">
-      <div className="page-title">
-        <h1>Recent Posts</h1>
-      </div>
       <div>
         <div>
           <PostForm />
+          <div className="page-title">
+            <h3>Recent Posts:</h3>
+          </div>
         </div>
         {loading ? (
           <h1>Loading posts..</h1>
