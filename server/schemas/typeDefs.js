@@ -17,30 +17,46 @@ const typeDefs = gql`
     total: Float
     products: [Product]
   }
-
-  type User {
+  type Profile {
     _id: ID
-    name: String
+    firstName: String
+    lastName: String
     email: String
-    cart: [Cart]
+    password: String
   }
-
   type Auth {
     token: ID
-    user: User
+    user: Profile
   }
-
+  type Comment {
+    _id: ID
+    text: String
+  }
+  type Post {
+    _id: ID
+    picture: String
+    description: String
+    comments: [Comment]
+  }
   type Query {
     products(name: String): [Product]
     product(_id: ID!): Product
     cart(_id: ID!): Cart
     checkout(products: [ID]!): Checkout
+    profiles: [Profile]
+    profile(profileId: ID!): Profile
+    posts: [Post]
+    post(postId: ID!): Post
   }
-
   type Mutation {
     addCart(products: [ID]!): Cart
-    updateUser(name: String, email: String, password: String): User
     updateProduct(_id: ID!, price: Float!): Product
+    addProfile(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+    addPost(picture: String, description: String!): Post
+    addComment(text: String, postId: ID!): Post
+    updatePost(_id: ID!, picture: String, description: String): Post
+    deletePost(_id: ID!): Post
   }
 `;
 

@@ -1,9 +1,43 @@
-const db = require('./connection');
-const { Product } = require('../models');
+const db = require("./connection");
+const { Profile, Product, Post, Comment } = require("../models");
 
 db.once('open', async () => {
+    // Insert SEEDS for PROFILE here!!!
+    await Profile.deleteMany();
+    await Profile.create({
+        firstName: 'Carlos',
+        lastName: 'Brito',
+        email: 'carlos@carlos.com',
+        password: 'carlos'
+    })
+    console.log('profiles seeded');
 
-  // Product Seeds
+    await Post.deleteMany();
+    await Post.create([
+        {
+            picture: "",
+            description: "My first Post",
+            comments: []
+        },
+        {
+            picture: "",
+            description: "My second post",
+            comments: []
+        }
+    ])
+    console.log('posts seeded');
+    
+    await Comment.deleteMany();
+    const comment = await Comment.create({
+        text: "My first comment"
+    })
+    console.log('comments seeded');
+    await Post.findOneAndUpdate({ description: "My first Post" }, {
+        $push: { comments: comment._id }},
+        { new: true }
+    )
+    console.log("comments seeded")
+
   await Product.deleteMany();
   const products = await Product.insertMany([
     {
@@ -49,29 +83,7 @@ db.once('open', async () => {
       image: '/images/toyota-tundra.jpg',
     },
   ]);
-  
-  console.log('products seeded');
-  process.exit();
 
-  // Profile Seeds
-  // await Profile.deleteMany();
-  // await Profile.create({
-  //   name: 'Bob Smith',
-  //   email: 'BobSmith@mail.com',
-  //   password: 'verySafePassword1',
-  //   cart: [
-  //     {
-  //       products: [products[0]._id, products[1]._id]
-  //     }
-  //   ]
-  // });
-
-  // await User.create({
-  //   name: 'Richard Jones',
-  //   email: 'RichardJones@mail.com',
-  //   password: 'verySafePassword2',
-  // });
-
-  // console.log('profiles seeded');  
-  
+    console.log("products seeded");
+    process.exit();
 });

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Product = require('./Product');
 const { Schema } = mongoose;
-
 const cartSchema = new Schema({
     total: {
         type: Number,
@@ -14,7 +13,5 @@ const cartSchema = new Schema({
         }
     ]    
 })
-
-
 const Cart = mongoose.model('Cart', cartSchema);
 module.exports = Cart;

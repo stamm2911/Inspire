@@ -1,10 +1,14 @@
-const mongoose = require('mongoose');
-const { Schema } = require('mongoose');
-const bcrypt = require('bcrypt');
+const { Schema, model } = require('mongoose');
 const Cart = require('./Cart');
+const bcrypt = require('bcrypt');
 
 const profileSchema = new Schema({
-  name: {
+  firstName: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  lastName: {
     type: String,
     required: true,
     trim: true
@@ -22,17 +26,20 @@ const profileSchema = new Schema({
   cart: [Cart.schema]
 });
 
-profileSchema.pre('save', async function(next) {
-  if (this.isNew || this.isModified('password')) {
+// set up pre-save middleware to create password
+profileSchema.pre('save', async function(next){
+  if(this.isNew || this.isModified('password')){
     const saltRounds = 10;
-    this.password = await bcrypt.hash(this.password, saltRounds);
+    this.password = await bcrypt.hash(this.password, saltRounds)
   }
   next();
-});
+})
 
-profileSchema.methods.isCorrectPassword = async function(password) {
-  return await bcrypt.compare(password, this.password);
-};
+// compare the incoming password with the hashed password
+profileSchema.methods.isCorrectPassword = async function(password){
+  return await bcrypt.compare(password, this.password)
+}
 
-const Profile = mongoose.model('Profile', profileSchema);
+const Profile = model('Profile', profileSchema);
+
 module.exports = Profile;
