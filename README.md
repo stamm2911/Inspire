@@ -57,7 +57,7 @@ Stripe
 ![image](./assets/stripe.jpg)
 
 Profile
-![image](./assets/profile.jpg)
+![image](./assets/Profile.jpg)
 
 Walkthrough Demo
 ![gif](./assets/demo.jpg)
