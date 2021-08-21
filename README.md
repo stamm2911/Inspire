@@ -25,6 +25,7 @@ To install the necessary packages, open the terminal and run `npm install`. To d
 <!-- Agregar heroku -->
 * [Deployed App]()
 * [Github Repository](https://github.com/stamm2911/Inspire)
+
 ## Technologies
 * [MongoDB](https://www.mongodb.com/) is a source-available cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.
 * [Express](https://expressjs.com/)  is a back end web application framework for Node.js. It is designed for building web applications and APIs.
@@ -35,31 +36,35 @@ To install the necessary packages, open the terminal and run `npm install`. To d
 * [Mongoose](https://mongoosejs.com/) provides a straight-forward, schema-based solution to model your application data. It includes built-in type casting, validation, query building, business logic hooks and more, out of the box.
 * [Materialize](https://materializecss.com/) is a modern responsive CSS framework based on Material Design by Google.
 * [Heroku](https://www.heroku.com/) is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
+
 ## Future Development
 * Create profile pages that contain demographic information of the users and their previous activity.
 * Adding functionality for other users to comment on posts
 * Adding functionality for users to upload images alongside their posts.
 * Adding functionality for each individual user to sell via their profile.
+
 ## Screenshots and Demo
-<!-- Agregar imagenes y demo a un folder assets y linkear-->
 Login / Sign-Up
-![image]()
+![image](./assets/login.jpg)
 
 Social Media
-![image]()
+![image](./assets/main.jpg)
 
 Marketplace
-![image]()
+![image](./assets/marketplace.jpg)
 
 Stripe
-![image]()
+![image](./assets/stripe.jpg)
+
+Profile
+![image](./assets/profile.jpg)
 
 Walkthrough Demo
-![gif]()
+![gif](./assets/demo.jpg)
 
 
 ## Contributors
-<!-- Agregar github de carlos -->
-Visit our GitHubs: [stamm2911](https://github.com/stamm2911), [ejpascualj](https://github.com/ejpascualj), [00anp](https://github.com/00anp), [Enrique246](https://github.com/Enrique246), []()
+Visit our GitHubs: [stamm2911](https://github.com/stamm2911), [ejpascualj](https://github.com/ejpascualj), [00anp](https://github.com/00anp), [Enrique246](https://github.com/Enrique246), and [cbrito1994](https://github.com/cbrito1994).
+
 ## License
 This project is licensed under MIT license.
