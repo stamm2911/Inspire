@@ -60,7 +60,7 @@ Profile
 ![image](./assets/Profile.jpg)
 
 Walkthrough Demo
-![gif](./assets/demo.jpg)
+![gif](./assets/demo.gif)
 
 
 ## Contributors
