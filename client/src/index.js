@@ -39,11 +39,11 @@ const client = new ApolloClient({
 console.log(client)
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
+  // <ApolloProvider client={client}>
     <React.StrictMode>
       <App />
-    </React.StrictMode>
-  </ApolloProvider>,
+    </React.StrictMode>,
+  // </ApolloProvider>,
   document.getElementById('root')
 );
 
