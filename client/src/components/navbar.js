@@ -39,7 +39,7 @@ function Navbar() {
             </li>
             <li>
               <Link style={{ ...styles }} to="/marketplace">
-                Market palce
+                Market place
               </Link>
             </li>
             <li>
