@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Profile } = require('../models');
+const { Profile, Product, Category, Order, Stock } = require('../models');
 const { Post } = require('../models');
 const { signToken } = require('../utils/auth');
 
@@ -20,6 +20,7 @@ const resolvers = {
     post: async (parent, { _id }) => {
       return await Post.findById(_id).populate("comments");
     }
+    
   },
 
   Mutation: {
