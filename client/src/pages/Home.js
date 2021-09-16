@@ -14,7 +14,7 @@ function Home() {
   console.log(data);
   const posts = data?.posts || [];
   return (
-    <div className="container">
+    <div >
       <div>
         <div>
           <PostForm />
