@@ -35,18 +35,18 @@ body {
 .input-field {
   display: flex;
   border-radius: 5px;
-  position: absolute;
   margin: initial;
 }
 
 #input {
   background-color: #66666680;
   color: rgb(0, 0, 0);
-  min-width: 50ch;
-  padding: 7px 7px 7px 45px;
+  min-width: 40ch;
+  padding: 7px 20px 7px 40px;
   font-size: 1.3em;
   border: none;
   border-radius: 5px;
+  margin-right: 0px;
 }
 
 .submit-button {

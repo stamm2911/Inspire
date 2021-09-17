@@ -45,7 +45,7 @@ function PostForm() {
           {/* <button className="submit-button" type="submit" color="teal">
             Submit
           </button> */}
-          <button class="waves-effect waves-light btn" type="submit">Submit</button>
+        <button class="waves-effect waves-light btn" type="submit">Submit</button>
         </div>
       </form>
       {/* {error && (
