@@ -32,6 +32,11 @@ function Navbar() {
             <i className="material-icons">menu</i>
           </Link>
           <ul className="right hide-on-med-and-down">
+          <li>
+              <Link style={{ ...styles }} to="/">
+                Login
+              </Link>
+            </li>
             <li>
               <Link style={{ ...styles }} to="/main">
                 Main

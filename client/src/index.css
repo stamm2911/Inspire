@@ -6,8 +6,8 @@
 .nav-bg {
   background-image: linear-gradient(
     to right,
-    rgb(255, 60, 0),
-    rgb(255, 145, 0)
+    rgb(17, 0, 255),
+    rgb(140, 79, 238)
   );
   padding-left: 10px;
 }

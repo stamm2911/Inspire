@@ -23,7 +23,7 @@ To install the necessary packages, open the terminal and run `npm install`. To d
 * Users can purchase items in cart using stripe.
 ## Deployment
 <!-- Agregar heroku -->
-* [Deployed App](https://quiet-cliffs-65370.herokuapp.com/)
+* [Deployed App](https://salty-reaches-45303.herokuapp.com/)
 * [Github Repository](https://github.com/stamm2911/Inspire)
 
 ## Technologies
